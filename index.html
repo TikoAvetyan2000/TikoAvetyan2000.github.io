@@ -1,0 +1,694 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tigran Avetyan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap">
+
+<style>
+  /* Layout: single-column sections with wide content areas, sticky nav */
+  :root {
+    --bg: #F7F6F3;
+    --bg2: #EEECEA;
+    --fg: #1A1916;
+    --fg2: #6B6860;
+    --accent: #2563EB;
+    --accent-light: #DBEAFE;
+    --card: #FFFFFF;
+    --border: #E2DFD9;
+    --green: #16A34A;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111110;
+      --bg2: #1A1918;
+      --fg: #F0EDE8;
+      --fg2: #8A8780;
+      --accent: #3B82F6;
+      --accent-light: #1E3A5F;
+      --card: #1F1E1C;
+      --border: #2E2C28;
+      --green: #22C55E;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111110;
+    --bg2: #1A1918;
+    --fg: #F0EDE8;
+    --fg2: #8A8780;
+    --accent: #3B82F6;
+    --accent-light: #1E3A5F;
+    --card: #1F1E1C;
+    --border: #2E2C28;
+    --green: #22C55E;
+    color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    padding-inline: 20px;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 760px; margin-inline: auto; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding-block: 14px;
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .nav-logo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--fg);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-size: 0.875rem;
+    color: var(--fg2);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-hire {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem !important;
+    transition: opacity 0.15s;
+  }
+  .btn-hire:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero {
+    padding-block: 72px 56px;
+  }
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--green);
+    background: color-mix(in srgb, var(--green) 12%, transparent);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--fg2);
+    max-width: 520px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); }
+
+  /* STATS ROW */
+  .stats {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 72px;
+    background: var(--card);
+  }
+  .stat {
+    flex: 1;
+    padding: 24px 20px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--fg2);
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  /* SECTION */
+  section { margin-bottom: 72px; }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin-bottom: 32px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .skill-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--fg);
+  }
+  .skill-level {
+    font-size: 0.75rem;
+    color: var(--fg2);
+    margin-top: 1px;
+  }
+
+  /* PROJECT */
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .project-header {
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.03) 20px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+  .project-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .project-header h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .project-header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    max-width: 420px;
+    line-height: 1.6;
+  }
+  .project-body { padding: 28px 32px; }
+  .feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.855rem;
+    color: var(--fg2);
+  }
+  .feature-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .tag {
+    background: var(--bg2);
+    color: var(--fg2);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 20px;
+  }
+  .service-icon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .service-card h4 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 7px;
+    letter-spacing: -0.01em;
+  }
+  .service-card p {
+    font-size: 0.82rem;
+    color: var(--fg2);
+    line-height: 1.55;
+  }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px 36px;
+    text-align: center;
+  }
+  .contact-box h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .contact-box p {
+    color: var(--fg2);
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 28px; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--fg);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .email-display {
+    font-size: 0.875rem;
+    color: var(--fg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .copy-btn {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--fg2);
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: 28px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--fg2);
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    .stats { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+    .project-body { padding: 20px; }
+    .project-header { padding: 28px 20px; }
+    .contact-box { padding: 28px 20px; }
+    .nav-links { gap: 14px; }
+  }
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Tigran Avetyan</a>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:tigranavetyann@gmail.com" class="btn-hire">Hire me</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">
+      <span class="dot"></span>
+      Available for freelance work
+    </div>
+    <h1>Frontend developer<br>who builds <span>real products</span></h1>
+    <p>2.5 years building web applications with React, JavaScript, and REST APIs. I turn designs into fast, responsive interfaces — and I know how to integrate AI features that actually work.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">2<span>.5</span></div>
+      <div class="stat-label">Years experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1<span>+</span></div>
+      <div class="stat-label">Production app</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Tech stack tools</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">Integration skills</div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">What I know</div>
+    <div class="section-title">Skills & technologies</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">⚛</div>
+        <div>
+          <div class="skill-name">React</div>
+          <div class="skill-level">Main framework</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">JS</div>
+        <div>
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-level">Core language</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">TS</div>
+        <div>
+          <div class="skill-name">TypeScript</div>
+          <div class="skill-level">Working knowledge</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div>
+          <div class="skill-name">HTML / CSS</div>
+          <div class="skill-level">Responsive design</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗃</div>
+        <div>
+          <div class="skill-name">Redux</div>
+          <div class="skill-level">State management</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔌</div>
+        <div>
+          <div class="skill-name">REST APIs</div>
+          <div class="skill-level">Integration & Postman</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎯</div>
+        <div>
+          <div class="skill-name">Figma</div>
+          <div class="skill-level">Design to code</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div>
+          <div class="skill-name">AI APIs</div>
+          <div class="skill-level">ChatGPT & Claude</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐙</div>
+        <div>
+          <div class="skill-name">Git / GitHub</div>
+          <div class="skill-level">Version control</div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄</div>
+        <div>
+          <div class="skill-name">MySQL</div>
+          <div class="skill-level">Basic queries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-label">Featured project</div>
+    <div class="section-title">What I've built</div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-badge">Production · Confidential</div>
+        <h3>Fuel Management Platform</h3>
+        <p>A full-featured B2B web platform for fuel companies — managing driver cards, vehicles, employees, stations, and transactions across an entire fuel network.</p>
+      </div>
+      <div class="project-body">
+        <div class="feature-list">
+          <div class="feature-item">Authentication & user roles</div>
+          <div class="feature-item">Interactive dashboard</div>
+          <div class="feature-item">Vehicle management</div>
+          <div class="feature-item">Employee management</div>
+          <div class="feature-item">Fuel card system</div>
+          <div class="feature-item">Transaction history</div>
+          <div class="feature-item">Station network view</div>
+          <div class="feature-item">Real-time notifications</div>
+          <div class="feature-item">Partner management</div>
+          <div class="feature-item">Responsive on all screens</div>
+        </div>
+        <div class="tech-tags">
+          <span class="tag">React</span>
+          <span class="tag">Redux</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Responsive Design</span>
+          <span class="tag">Git</span>
+        </div>
+        <p style="font-size:0.82rem; color:var(--fg2); font-style:italic;">This project is under NDA — available for discussion during interviews.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I offer</div>
+    <div class="section-title">How I can help</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🐛</div>
+        <h4>Bug fixes</h4>
+        <p>React, JavaScript, or CSS issues fixed fast. Send me the problem and I'll resolve it.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h4>Landing pages</h4>
+        <p>Responsive, pixel-perfect pages from your Figma design or brief.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <h4>API integration</h4>
+        <p>Connect your frontend to any REST API. Forms, authentication, data display.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h4>AI integration</h4>
+        <p>Add ChatGPT or Claude-powered features to your website or web app.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚛</div>
+        <h4>React components</h4>
+        <p>Custom reusable components, dashboards, data tables, and interactive UIs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h4>Figma to code</h4>
+        <p>Convert your Figma mockups into clean, maintainable React or HTML code.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-box">
+      <h3>Let's work together</h3>
+      <p>Open to freelance projects, small tasks, and long-term collaboration. Response within 24 hours.</p>
+      <div class="contact-links">
+        <a href="https://github.com/TikoAvetyan2000" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/tigranavetyan001" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://t.me/Tik_50001" target="_blank" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+      </div>
+      <div class="email-display">
+        <span>tigranavetyann@gmail.com</span>
+        <button class="copy-btn" onclick="
+          navigator.clipboard.writeText('tigranavetyann@gmail.com')
+            .then(() => { this.textContent = 'Copied!'; setTimeout(() => this.textContent = 'Copy', 2000); })
+            .catch(() => { this.textContent = 'Copy manually'; setTimeout(() => this.textContent = 'Copy', 2000); });
+        ">Copy</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Built by Tigran Avetyan · Frontend Developer · Yerevan, Armenia
+  </div>
+</footer>
+
+</body></html>
